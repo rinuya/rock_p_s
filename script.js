@@ -13,51 +13,71 @@
                 break;
         }  
     }
-    
+
+    let computerSelection;
+    let result = 0;
+    let playerSelection
+
+    //code for a single game
     function play (computerSelection, playerSelection){
-        console.log(computerSelection);
+        playerSelection=prompt("Rock/Paper/Scissors?")
+        computerSelection = computerPlay();
+        //computer shows what he randomly picked
+        console.log("Computer selected "+ computerSelection);
+        
         if (playerSelection==='Rock'){
-            switch(computerSelection){
-                case 'Rock':
-                    return "It's a tie!";
-                    break;
-                case 'Paper':
-                    return "You lost! Paper beats Rock"
-                    break;
-                case 'Scissors':
-                    return "You win! Rock beats Scissors"
-                    break;
+            //what happens if Player chose Rock
+            if(computerSelection=='Rock'){
+                    return "It's a tie!. U have won "+ result + " times so far!";
+            }
+            else if (computerSelection=='Paper'){
+                    return "You lost! Paper beats Rock. U have won " + result + " times so far!"
+            }
+            else if(computerSelection=='Scissors'){
+                    result++
+                    return "You win! Rock beats Scissors. U have won "+ result + " times so far!";
             }
         }
-        else if (playerSelection=="Paper"){
-            switch(computerSelection){
-                case 'Rock':
-                    return "You win! Paper beats Rock";
-                    break;
-                case 'Paper':
-                    return "It's a tie!"
-                    break;
-                case 'Scissors':
-                    return "You lost! Scissors beats Paper"
-                    break;
+        else if (playerSelection=='Paper'){
+            //what happens if Player chose Paper
+            if (computerSelection=='Rock'){
+                result++;
+                return "You win! Paper beats Rock. U have won "+ result+ " times so far!";
             }
+            else if (computerSelection=='Paper'){
+                return "It's a tie! U have won "+ result+ " times so far!";
+            }
+            else if (computerSelection=='Scissors'){
+                return "You lost! Scissors beats Paper. U have won "+ result+ " times so far!";
+            }
+            
 
         }
         else if (playerSelection=="Scissors"){
-            switch(computerSelection){
-                case 'Rock':
-                    return "You lost! Rock beats Scissors";
-                    break;
-                case 'Paper':
-                    return "You won! Scissors beats Paper"
-                    break;
-                case 'Scissors':
-                    return "It's a tie"
-                    break;
+            //what happens if Player chose Scissors
+            if(computerSelection=='Rock'){
+                    return "You lost! Rock beats Scissors. U have won "+ result+ " times so far!";
             }
-        }
+            else if (computerSelection=='Paper'){
+                result++
+                    return "You won! Scissors beats Paper. U have won "+ result+ " times so far!";
+            }
+            else if (computerSelection=='Scissors'){
+                    return "It's a tie. U have won "+ result+ " times so far!"
+            }
+            }
+
         else {
             console.log("Either you misspelled or you did not choose any of the 3 options");
         }
     }
     
+    //Function to play the game 5 Times, counts how many times you won and gives the End result
+    function game (computerSelection, playerSelection){
+  
+        for (i=1; i<6; i++) {
+            console.log( play(computerSelection, playerSelection));
+    }
+        console.log("Your end-result is "+ result);
+        result=0;
+    }
