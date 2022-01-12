@@ -1,5 +1,42 @@
+const btn1 =document.querySelector("#btn1");
+const btn2 =document.querySelector("#btn2");
+const btn3 =document.querySelector("#btn3");
 
-    function computerPlay () {
+const div = document.querySelector(".text");
+
+btn1.addEventListener('click', ()=>{
+    if (result < 5) {
+    let playerSelection =  btn1.getAttribute("class");
+    play(computerSelection, playerSelection);
+    div.innerHTML = ("You have won " + result + " times so far!");
+    }
+    else {
+      div.innerHTML =("The Game is over, you won 5 times. Refresh the page to play again!")
+    }});
+
+btn2.addEventListener('click', ()=>{
+    if (result < 5) {
+    let playerSelection =  btn2.getAttribute("class");
+    play(computerSelection, playerSelection);
+    div.innerHTML = ("You have won " + result + " times so far!");
+    }
+    else {
+      div.innerHTML =("The Game is over, you won 5 times. Refresh the page to play again!")
+    }});
+
+btn3.addEventListener('click', ()=>{
+    if (result < 5) {
+    let playerSelection =  btn3.getAttribute("class");
+    play(computerSelection, playerSelection);
+    div.innerHTML = ("You have won " + result + " times so far!");
+    }
+    else {
+        div.innerHTML =("The Game is over, you won 5 times. Refresh the page to play again!")
+    }});
+
+   
+   
+   function computerPlay () {
         let comp = Math.floor(Math.random()*3+1);
         switch(comp){
             case 3:
@@ -16,39 +53,37 @@
 
     let computerSelection;
     let result = 0;
-    let playerSelection
 
     //code for a single game
     function play (computerSelection, playerSelection){
-        playerSelection=prompt("Rock/Paper/Scissors?")
+        // var playerSelection =  btn.getAttribute("class");
+        console.log(playerSelection);
         computerSelection = computerPlay();
-        //computer shows what he randomly picked
-        console.log("Computer selected "+ computerSelection);
-        
+
         if (playerSelection==='Rock'){
             //what happens if Player chose Rock
             if(computerSelection=='Rock'){
-                    return "It's a tie!. U have won "+ result + " times so far!";
+                alert("Computer selected "+ computerSelection+"! It's a tie!. U have won "+ result + " times so far!");
             }
             else if (computerSelection=='Paper'){
-                    return "You lost! Paper beats Rock. U have won " + result + " times so far!"
+                alert("Computer selected "+ computerSelection+"! You lost! Paper beats Rock. U have won " + result + " times so far!");
             }
             else if(computerSelection=='Scissors'){
-                    result++
-                    return "You win! Rock beats Scissors. U have won "+ result + " times so far!";
+                result++;
+                alert("Computer selected "+ computerSelection+"! You win! Rock beats Scissors. U have won "+ result + " times so far!");
             }
         }
         else if (playerSelection=='Paper'){
             //what happens if Player chose Paper
             if (computerSelection=='Rock'){
                 result++;
-                return "You win! Paper beats Rock. U have won "+ result+ " times so far!";
+                alert("Computer selected "+ computerSelection+"! You win! Paper beats Rock. U have won "+ result+ " times so far!");
             }
             else if (computerSelection=='Paper'){
-                return "It's a tie! U have won "+ result+ " times so far!";
+                alert("Computer selected "+ computerSelection+"! It's a tie! U have won "+ result+ " times so far!");
             }
             else if (computerSelection=='Scissors'){
-                return "You lost! Scissors beats Paper. U have won "+ result+ " times so far!";
+                alert("Computer selected "+ computerSelection+"! You lost! Scissors beats Paper. U have won "+ result+ " times so far!");
             }
             
 
@@ -56,14 +91,14 @@
         else if (playerSelection=="Scissors"){
             //what happens if Player chose Scissors
             if(computerSelection=='Rock'){
-                    return "You lost! Rock beats Scissors. U have won "+ result+ " times so far!";
+                alert("Computer selected "+ computerSelection+"! You lost! Rock beats Scissors. U have won "+ result+ " times so far!");
             }
             else if (computerSelection=='Paper'){
                 result++
-                    return "You won! Scissors beats Paper. U have won "+ result+ " times so far!";
+                alert("Computer selected "+ computerSelection+"! You won! Scissors beats Paper. U have won "+ result+ " times so far!");
             }
             else if (computerSelection=='Scissors'){
-                    return "It's a tie. U have won "+ result+ " times so far!"
+                alert("Computer selected "+ computerSelection+"! It's a tie. U have won "+ result+ " times so far!");
             }
             }
 
@@ -81,3 +116,4 @@
         console.log("Your end-result is "+ result);
         result=0;
     }
+    
